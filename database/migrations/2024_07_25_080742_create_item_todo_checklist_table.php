@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('item_todo_checklist', function (Blueprint $table) {
-            $table->string('id', 36)->primary();
-            $table->string('checklist_id', 36);
+            // $table->string('id', 36)->primary();
+            $table->id();
+            $table->integer('checklist_id');
             $table->string('title');
+            $table->string('description');
             $table->string('status')->nullable();
             $table->timestamps();
             $table->foreign('checklist_id')->references('id')->on('checklist')->onDelete('cascade');

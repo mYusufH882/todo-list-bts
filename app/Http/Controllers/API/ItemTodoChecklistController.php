@@ -28,7 +28,7 @@ class ItemTodoChecklistController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'checklist_id' => 'required|string|max:36',
+            'checklist_id' => 'required|integer',
             'title' => 'required|string',
             'status' => 'string'
         ]);
@@ -63,7 +63,7 @@ class ItemTodoChecklistController extends Controller
         $itemTodo = ItemTodoChecklist::find($id);
 
         $request->validate([
-            'checklist_id' => 'required|string|max:36',
+            'checklist_id' => 'required|integer',
             'title' => 'required|string',
             'status' => 'string'
         ]);

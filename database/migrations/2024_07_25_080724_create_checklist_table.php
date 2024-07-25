@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('checklist', function (Blueprint $table) {
-            $table->string('id', 36)->primary();
+            // $table->string('id', 36)->primary();
+            $table->id();
             $table->string('title');
             $table->string('description');
             $table->timestamps();

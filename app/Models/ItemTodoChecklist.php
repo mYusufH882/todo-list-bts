@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class ItemTodoChecklist extends Model
 {
-    use HasFactory, UseUUID;
+    use HasFactory;
 
     protected $table = 'item_todo_checklist';
 
     protected $fillable = [
         'checklist_id',
         'title',
+        'description',
         'status'
     ];
 }
