@@ -16,7 +16,10 @@ class ChecklistController extends Controller
     {
         $checklist = Checklist::all();
 
-        return response()->json($checklist);
+        return response()->json([
+            'status' => 200,
+            'data' => $checklist
+        ]);
     }
 
     /**
@@ -31,7 +34,11 @@ class ChecklistController extends Controller
 
         $checklist = Checklist::create($request->all());
 
-        return response()->json($checklist, Response::HTTP_CREATED);
+        return response()->json([
+            'status' => 200,
+            'message' => 'Checklist berhasil disimpan !!!',
+            'data' => $checklist
+        ]);
     }
 
     /**
@@ -41,7 +48,10 @@ class ChecklistController extends Controller
     {
         $checklist = Checklist::find($id);
 
-        return response()->json($checklist);
+        return response()->json([
+            'status' => 200,
+            'data' => $checklist
+        ]);
     }
 
     /**
@@ -58,7 +68,11 @@ class ChecklistController extends Controller
 
         $checklist->update($request->all());
 
-        return response()->json($checklist);
+        return response()->json([
+            'status' => 200,
+            'message' => 'Checklist berhasil diubah !!!',
+            'data' => $checklist
+        ]);
     }
 
     /**
@@ -68,6 +82,9 @@ class ChecklistController extends Controller
     {
         $checklist = Checklist::find($id)->delete();
 
-        return response()->json('Checklist berhasil dihapus!!!', Response::HTTP_NO_CONTENT);
+        return response()->json([
+            'status' => 200,
+            'message' => 'Checklist berhasil dihapus !!!',
+        ]);
     }
 }

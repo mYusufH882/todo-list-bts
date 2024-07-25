@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\API\ChecklistController;
 use App\Http\Controllers\API\ItemTodoChecklistController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +22,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::apiResource('checklist', ChecklistController::class);
-Route::apiResource('item-checklist', ItemTodoChecklistController::class);
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', RegisterController::class)->name('register');
+
+Route::middleware('auth:api')->group(function() {
+    Route::apiResource('checklist', ChecklistController::class);
+    Route::apiResource('item-checklist', ItemTodoChecklistController::class);
+});

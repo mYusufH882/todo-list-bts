@@ -16,7 +16,10 @@ class ItemTodoChecklistController extends Controller
     {
         $itemTodo = ItemTodoChecklist::all();
 
-        return response()->json($itemTodo);
+        return response()->json([
+            'status' => 200,
+            'data' => $itemTodo
+        ]);
     }
 
     /**
@@ -32,7 +35,11 @@ class ItemTodoChecklistController extends Controller
 
         $itemTodo = ItemTodoChecklist::create($request->all());
 
-        return response()->json($itemTodo);
+        return response()->json([
+            'status' => 200,
+            'message' => 'Item Todo berhasil disimpan !!!',
+            'data' => $itemTodo
+        ]);
     }
 
     /**
@@ -42,7 +49,10 @@ class ItemTodoChecklistController extends Controller
     {
         $itemTodo = ItemTodoChecklist::find($id);
 
-        return response()->json($itemTodo, Response::HTTP_CREATED);
+        return response()->json([
+            'status' => 200,
+            'data' => $itemTodo
+        ]);
     }
 
     /**
@@ -60,7 +70,11 @@ class ItemTodoChecklistController extends Controller
 
         $itemTodo->update($request->all());
 
-        return response()->json($itemTodo);
+        return response()->json([
+            'status' => 200,
+            'message' => 'Item Todo berhasil diubah !!!',
+            'data' => $itemTodo
+        ]);
     }
 
     /**
@@ -70,6 +84,9 @@ class ItemTodoChecklistController extends Controller
     {
         $itemTodo = ItemTodoChecklist::find($id)->delete();
 
-        return response()->json('Item Todo Checklist berhasil dihapus !!!', Response::HTTP_NO_CONTENT);
+        return response()->json([
+            'status' => 200,
+            'message' => 'Item Todo berhasil dihapus !!!'
+        ]);
     }
 }
