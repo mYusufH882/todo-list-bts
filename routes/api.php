@@ -27,5 +27,13 @@ Route::post('register', RegisterController::class)->name('register');
 
 Route::middleware('auth:api')->group(function() {
     Route::apiResource('checklist', ChecklistController::class);
-    Route::apiResource('item-checklist', ItemTodoChecklistController::class);
+    // Route::apiResource('item-checklist', ItemTodoChecklistController::class);
+
+    //v2
+    Route::get('/checklist/{id}/item', [ItemTodoChecklistController::class, 'getAllItemByChecklist']);
+    Route::post('/checklist/{id}/item', [ItemTodoChecklistController::class, 'storeItembyChecklist']);
+    Route::get('/checklist/{id}/item/{item_id}', [ItemTodoChecklistController::class, 'showItemIdByChecklist']);
+    Route::put('/checklist/{id}/item/{item_id}', [ItemTodoChecklistController::class, 'updateItemStatusByChecklist']);
+    Route::delete('/checklist/{id}/item/{item_id}', [ItemTodoChecklistController::class, 'deleteItemIdByChecklist']);
+    Route::put('/checklist/{id}/item/rename/{item_id}', [ItemTodoChecklistController::class, 'updateRenameItemByChecklist']);
 });

@@ -16,4 +16,9 @@ class Checklist extends Model
         'title',
         'description'
     ];
+
+    public function items()
+    {
+        return $this->hasMany(ItemTodoChecklist::class);
+    }
 }
