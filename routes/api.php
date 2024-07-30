@@ -26,6 +26,7 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('register', RegisterController::class)->name('register');
 
 Route::middleware('auth:api')->group(function() {
+    Route::get('/user-profile', [AuthController::class, 'checkProfile']);
     Route::apiResource('checklist', ChecklistController::class);
     // Route::apiResource('item-checklist', ItemTodoChecklistController::class);
 
@@ -36,4 +37,6 @@ Route::middleware('auth:api')->group(function() {
     Route::put('/checklist/{id}/item/{item_id}', [ItemTodoChecklistController::class, 'updateItemStatusByChecklist']);
     Route::delete('/checklist/{id}/item/{item_id}', [ItemTodoChecklistController::class, 'deleteItemIdByChecklist']);
     Route::put('/checklist/{id}/item/rename/{item_id}', [ItemTodoChecklistController::class, 'updateRenameItemByChecklist']);
+
+    Route::post('logout', [AuthController::class, 'logout']);
 });
