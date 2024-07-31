@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->integer('checklist_id');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('status')->nullable();
             $table->timestamps();
             $table->foreign('checklist_id')->references('id')->on('checklist')->onDelete('cascade');
